@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect - Your Gateway to Higher Education</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <span style="display:inline-block;width:48px;height:48px;">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#paint0_linear)"/>
+                        <rect x="10" y="10" width="28" height="28" rx="8" fill="#fff"/>
+                        <text x="24" y="29" text-anchor="middle" font-family="'Inter',sans-serif" font-size="16" font-weight="bold" fill="#2563eb">CS</text>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="2" y1="2" x2="46" y2="46" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#2563eb"/>
+                                <stop offset="1" stop-color="#1e40af"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </span>
+                <span class="navbar-brand-name">CS Service Pvt Ltd</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#colleges">Colleges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-warning ms-3 d-none" id="adminPanelBtn">Admin Panel</button>
+                <button class="btn btn-outline-light ms-2" id="adminLoginBtn">Admin Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container position-relative z-2">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Your Children's Career Is Our First Priority</h1>
+                    <p class="lead mb-4 text-muted">We offer the best Career Care for your Child with personalized guidance and support</p>
+                    <div class="d-flex gap-2 mb-4">
+                        <span class="badge bg-primary">Top Colleges</span>
+                        <span class="badge bg-success">NAAC Accredited</span>
+                        <span class="badge bg-warning text-dark">Expert Counselors</span>
+                    </div>
+                    <div class="search-box mb-4">
+                        <input type="text" class="form-control" placeholder="Search colleges, courses, or locations...">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-search me-2"></i>Search
+                        </button>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a href="#contact" class="btn btn-pink">
+                            <i class="fas fa-graduation-cap me-2"></i>Free Career Counselling
+                        </a>
+                        <a href="#colleges" class="btn btn-outline-primary">
+                            <i class="fas fa-university me-2"></i>Browse Colleges
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div style="max-width: 500px; margin: 0 auto;">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" 
+                             alt="Students studying" 
+                             class="img-fluid rounded-3 shadow-lg"
+                             style="max-height: 400px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Courses & Services We Offer</h2>
+                <p class="text-muted">Comprehensive educational programs for your bright future</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card p-4 shadow-sm" id="coursesCard">
+                        <div class="row" id="coursesList">
+                            <div class="col-md-6">
+                                <ul id="coursesListLeft">
+                                    <li>Polytechnic & Diploma Programs</li>
+                                    <li>B.Tech, M.Tech, BJMC</li>
+                                    <li>GNM/ANM, B.Nursing, MBBS & All</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul id="coursesListRight">
+                                    <li>Hotel & Hospital Management</li>
+                                    <li>B.Sc.(Agri), MBA/MCA</li>
+                                    <li>Professional Certification Courses</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 d-flex gap-2 justify-content-center">
+                            <span class="badge bg-warning text-dark">NAAC Accredited Colleges</span>
+                            <span class="badge bg-success">A+ NAAC</span>
+                            <span class="badge bg-info">UGC Approved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Colleges -->
+    <section id="colleges" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Featured Colleges</h2>
+                <p class="text-muted">Top-rated institutions for quality education</p>
+            </div>
+            <div class="row mb-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                        </span>
+                        <select class="form-select" id="collegeLocationFilter">
+                            <option value="all">All Locations</option>
+                            <!-- Locations will be populated by JS -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="college-cards">
+                <!-- College cards will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">How It Works</h2>
+                <p class="text-muted">Simple steps to start your educational journey</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="step-card text-center">
+                        <div class="step-icon mb-3">
+                            <i class="fas fa-search fa-3x"></i>
+                        </div>
+                        <h3 class="h4">Search</h3>
+                        <p class="text-muted">Browse through our extensive list of colleges and courses</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card text-center">
+                        <div class="step-icon mb-3">
+                            <i class="fas fa-graduation-cap fa-3x"></i>
+                        </div>
+                        <h3 class="h4">Select</h3>
+                        <p class="text-muted">Choose your preferred college and course with expert guidance</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card text-center">
+                        <div class="step-icon mb-3">
+                            <i class="fas fa-file-alt fa-3x"></i>
+                        </div>
+                        <h3 class="h4">Apply</h3>
+                        <p class="text-muted">Complete your application with our assistance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Contact Us</h2>
+                <p class="text-muted">Get in touch for personalized career guidance</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="mb-4">Contact Information</h5>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-phone-alt text-primary me-3"></i>
+                                        <div>
+                                            <a href="tel:+919263971401" class="text-decoration-none">+91 9263971401</a><br>
+                                            <a href="tel:+918877368357" class="text-decoration-none">+91 8877368357</a>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                                        <div>
+                                            Kashipur, Samastipur<br>
+                                            Bihar (848101)
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-clock text-primary me-3"></i>
+                                        <div>
+                                            Monday - Saturday<br>
+                                            9:00 AM - 6:00 PM
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-4">Send us a Message</h5>
+                                    <form>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" placeholder="Your Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="email" class="form-control" placeholder="Your Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>CS Private Limited</h5>
+                    <p class="text-muted">Gateway to a Bright Future</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Home</a></li>
+                        <li><a href="#colleges" class="text-muted">Colleges</a></li>
+                        <li><a href="#courses" class="text-muted">Courses</a></li>
+                        <li><a href="#contact" class="text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Accreditation</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="https://www.naac.gov.in/images/naac_logo.png" alt="NAAC" style="height:40px;">
+                        <div>
+                            <p class="text-muted mb-0">NAAC Accredited Colleges</p>
+                            <span class="badge bg-success">A+ Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2024 CS Private Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
