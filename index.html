@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect - Your Gateway to Higher Education</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <!-- Unique SVG Logo for CS Private Limited -->
+                <span style="display:inline-block;width:48px;height:48px;">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#paint0_linear)"/>
+                        <rect x="10" y="10" width="28" height="28" rx="8" fill="#fff"/>
+                        <text x="24" y="29" text-anchor="middle" font-family="'Poppins',sans-serif" font-size="16" font-weight="bold" fill="#6C63FF">CS</text>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="2" y1="2" x2="46" y2="46" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#6C63FF"/>
+                                <stop offset="1" stop-color="#00C9A7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </span>
+                <span class="navbar-brand-name">CS Service Pvt Ltd</span>
+            </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#colleges">Colleges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <!-- Admin Panel Button (hidden by default) -->
+                <button class="btn btn-warning ms-3 d-none" id="adminPanelBtn">Admin Panel</button>
+                <button class="btn btn-outline-primary ms-2" id="adminLoginBtn">Admin Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Carousel Below Navbar -->
+    <!-- (Removed by AI as per user request) -->
+    <!-- End Banner Carousel Below Navbar -->
+
+    <!-- Edit Banner Images Modal -->
+    <div class="modal fade" id="editBannerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Banner Images</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editBannerForm">
+                        <div id="bannerImagesList"></div>
+                        <div class="input-group mt-3">
+                            <input type="url" class="form-control" id="newBannerImageUrl" placeholder="Image URL">
+                            <button type="button" class="btn btn-success" id="addBannerImageBtn">Add</button>
+                        </div>
+                        <div class="text-end mt-3">
+                            <button type="submit" class="btn btn-success">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div class="modal fade" id="adminModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adminModalTitle">Add New College</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminCollegeForm">
+                        <input type="hidden" id="editCollegeId">
+                        <div class="mb-3">
+                            <label for="collegeName" class="form-label">College Name</label>
+                            <input type="text" class="form-control" id="collegeName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="collegeLocation" class="form-label">College Location</label>
+                            <input type="text" class="form-control" id="collegeLocation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="collegePhoto" class="form-label">College Photo URL</label>
+                            <input type="url" class="form-control" id="collegePhoto" required>
+                        </div>
+                        <div id="coursesContainer">
+                            <label class="form-label">Courses & Fees</label>
+                            <div class="row g-2 mb-2 course-row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control course-name" placeholder="Course Name" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control course-fee" placeholder="Fee (INR)" required>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger remove-course">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary mb-3" id="addCourseBtn">Add Another Course</button>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">Save College</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section position-relative overflow-hidden">
+        <div class="container position-relative z-2">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-3"> <span style='color:#2389c8;'>Your Children Career Is Our First Priority</span></h1>
+                    <p class="lead mb-4">We offer the best Career Care for your Child</p>
+                    <div class="mb-3">
+                        <span class="badge bg-secondary">Top College/Universities in India</span>
+                    </div>
+                    <div class="search-box mb-3">
+                        <input type="text" class="form-control" placeholder="Search colleges...">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-pink btn-lg">Free Career Counselling</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <!-- Modern SVG Illustration for Education/Consulting -->
+                    <div style="max-width: 400px; margin: 0 auto;">
+                        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+                            <ellipse cx="200" cy="260" rx="180" ry="30" fill="#e0e7ff"/>
+                            <rect x="120" y="120" width="160" height="80" rx="18" fill="#6C63FF"/>
+                            <rect x="140" y="140" width="120" height="40" rx="10" fill="#fff"/>
+                            <circle cx="200" cy="110" r="30" fill="#00C9A7"/>
+                            <ellipse cx="200" cy="110" rx="18" ry="10" fill="#fff" opacity="0.7"/>
+                            <rect x="180" y="170" width="40" height="20" rx="6" fill="#FF6B81"/>
+                            <text x="200" y="155" text-anchor="middle" font-family="'Poppins',sans-serif" font-size="18" font-weight="bold" fill="#6C63FF">STUDENT</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Banner Carousel Below Search Option -->
+            <div class="banner-carousel position-relative w-100 overflow-hidden mt-4" id="bannerCarousel">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1200&q=80" class="banner-img active" alt="Students 1">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80" class="banner-img" alt="Campus 2">
+                <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1200&q=80" class="banner-img" alt="Students 3">
+                <button class="btn btn-outline-warning position-absolute top-0 end-0 m-3 d-none" id="editBannerBtn">Edit Banner Images</button>
+            </div>
+        </div>
+        <!-- Animated background shape -->
+        <div class="hero-bg-shape position-absolute top-0 end-0 w-100 h-100 z-1" style="pointer-events:none;"></div>
+    </section>
+
+    <!-- Services/Courses Section -->
+    <section id="courses" class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-center mb-0 flex-grow-1">Courses & Services We Offer</h2>
+                <button class="btn btn-outline-warning ms-3 d-none" id="editCoursesBtn">Edit</button>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card p-4 shadow-sm" id="coursesCard">
+                        <div class="row" id="coursesList">
+                            <div class="col-md-6">
+                                <ul id="coursesListLeft">
+                                    <li>Polytechnic, Diploma</li>
+                                    <li>B.Tech, M.Tech, BJMC</li>
+                                    <li>GNM/ANM, B.Nursing, MBBS &amp; All</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul id="coursesListRight">
+                                    <li>Hotel/Hospital Management</li>
+                                    <li>B.Sc.(Agri), MBA/MCA</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <span class="badge bg-warning text-dark">NAAC Accredited Colleges</span>
+                            <span class="badge bg-success">A+ NAAC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Courses Modal -->
+    <div class="modal fade" id="editCoursesModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Courses & Services</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editCoursesForm">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Left Column</label>
+                                <div id="editCoursesLeft"></div>
+                                <button type="button" class="btn btn-sm btn-secondary mt-2" id="addCourseLeft">Add</button>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Right Column</label>
+                                <div id="editCoursesRight"></div>
+                                <button type="button" class="btn btn-sm btn-secondary mt-2" id="addCourseRight">Add</button>
+                            </div>
+                        </div>
+                        <div class="text-end mt-3">
+                            <button type="submit" class="btn btn-success">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Colleges -->
+    <section id="colleges" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Featured Colleges</h2>
+            <div class="row mb-4 justify-content-center">
+                <div class="col-md-4">
+                    <select class="form-select" id="collegeLocationFilter">
+                        <option value="all">All Locations</option>
+                        <!-- Locations will be populated by JS -->
+                    </select>
+                </div>
+            </div>
+            <div class="row" id="college-cards">
+                <!-- College cards will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">How It Works</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="step-card text-center">
+                        <i class="fas fa-search fa-3x mb-3"></i>
+                        <h3>Search</h3>
+                        <p>Browse through our extensive list of colleges</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card text-center">
+                        <i class="fas fa-graduation-cap fa-3x mb-3"></i>
+                        <h3>Select</h3>
+                        <p>Choose your preferred college and course</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card text-center">
+                        <i class="fas fa-file-alt fa-3x mb-3"></i>
+                        <h3>Apply</h3>
+                        <p>Fill out the application form and submit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>CS Private Limited</h5>
+                    <p>Gateway to a Bright Future</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><strong>Phone:</strong> <a href="tel:+919263971401" class="text-white">+91 9263971401</a>, <a href="tel:+918877368357" class="text-white">+91 8877368357</a></p>
+                    <p><strong>Location:</strong> Kashipur, Samastipur, Bihar (848101)</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Accreditation</h5>
+                    <p><img src="https://www.naac.gov.in/images/naac_logo.png" alt="NAAC" style="height:40px;"> NAAC Accredited Colleges (A+)</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
