@@ -615,4 +615,67 @@ function updateAdminUI() {
         loginBtn.classList.add('btn-outline-primary');
         loginBtn.classList.remove('btn-danger');
     }
-} 
+}
+
+// Admin Login Modal
+const adminLoginModal = new bootstrap.Modal(document.getElementById('adminLoginModal'));
+
+// Admin credentials (in a real application, this would be handled server-side)
+const ADMIN_CREDENTIALS = {
+    username: 'admin',
+    password: 'admin123'
+};
+
+// Show admin login modal when login button is clicked
+document.getElementById('adminLoginBtn').addEventListener('click', () => {
+    adminLoginModal.show();
+});
+
+// Handle admin login form submission
+document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+    
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        // Successful login
+        document.getElementById('adminPanelBtn').classList.remove('d-none');
+        document.getElementById('adminLoginBtn').classList.add('d-none');
+        adminLoginModal.hide();
+        
+        // Show success message
+        const successAlert = document.createElement('div');
+        successAlert.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3';
+        successAlert.innerHTML = `
+            <strong>Success!</strong> You are now logged in as admin.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.body.appendChild(successAlert);
+        
+        // Remove alert after 3 seconds
+        setTimeout(() => {
+            successAlert.remove();
+        }, 3000);
+    } else {
+        // Failed login
+        const errorAlert = document.createElement('div');
+        errorAlert.className = 'alert alert-danger alert-dismissible fade show';
+        errorAlert.innerHTML = `
+            <strong>Error!</strong> Invalid username or password.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.getElementById('adminLoginForm').prepend(errorAlert);
+        
+        // Remove alert after 3 seconds
+        setTimeout(() => {
+            errorAlert.remove();
+        }, 3000);
+    }
+});
+
+// Show admin panel when admin panel button is clicked
+document.getElementById('adminPanelBtn').addEventListener('click', () => {
+    const adminModal = new bootstrap.Modal(document.getElementById('adminModal'));
+    adminModal.show();
+}); 
